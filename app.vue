@@ -96,10 +96,12 @@
           </form>
         </div>
         <div class="flex items-center p-6">
-          <button class="mr-auto bg-white text-black">Reset</button>
+          <button @click="reset" class="mr-auto bg-white text-black">
+            Reset
+          </button>
           <button
-            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 ml-2 bg-black hover:bg-gray-800 transition-all duration-200 text-white shadow-lg"
             @click="save"
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 ml-2 bg-black hover:bg-gray-800 transition-all duration-200 text-white shadow-lg"
           >
             <span class="button_top"> Save </span>
           </button>
@@ -194,6 +196,15 @@ const form = reactive({
 
 const save = () => {
   state.value.add(form)
+  reset()
+}
+
+const reset = () => {
+  form.date = ''
+  form.time = ''
+  form.systolic = ''
+  form.diastolic = ''
+  form.pulse = ''
 }
 
 const entries = computed(() => {
